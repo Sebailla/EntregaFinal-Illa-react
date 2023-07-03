@@ -1,10 +1,11 @@
-import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography, withTheme } from "@mui/material";
+import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
 import NavListDrawer from "./NavListDrawer";
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu'
 import InboxIcon from '@mui/icons-material/Inbox'
 import { Drafts } from "@mui/icons-material"
 import CartWidget from "./CartWidget ";
+import logo from "./logo_1_ch-remo.png"
 
 
 const navLinks = [
@@ -24,33 +25,48 @@ const navLinks = [
 
 const Navbar = () => {
 
+    const cartItem = 2;
+
     const [open, setOpen] = useState(false);
+
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" sx={{ backgroundColor: 'whitesmoke' }}>
                 <Toolbar>
+
                     <IconButton
-                        color="inherit"
+                        /*  color="inherit" */
                         size="large"
                         onClick={() => setOpen(true)}
-                        sx={{ display: { xs: 'Flex', md: 'none' } }}
+                        sx={{ display: { xs: 'Flex', md: 'none' }, color: 'black' }}
                         edge='start'
                     >
                         <MenuIcon />
                     </IconButton>
+
+                    <Box
+                        component='img'
+                        src={logo}
+                        alt="logo"
+                        sx={{ width: 200, height: 100 }}
+                    />
+
                     <Typography
                         variant="h4"
-                        sx={{ flexGrow: 1 }}
+                        sx={{ flexGrow: 1, fontFamily: '' }}
                         color={'orange'}
                     >
-                        Tienda Aqualife
+                        <h1>
+                            Tienda Acualife
+                        </h1>
                     </Typography>
 
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ display: { xs: 'none', md: 'flex' }, marginLeft: '40' }}>
                         {
                             navLinks.map(item => (
                                 <Button
-                                    color='inherit'
+                                    /* color='inherit' */
+                                    sx={{ color: 'black' }}
                                     key={item.title}
                                     component='a'
                                     href={item.path}
@@ -60,9 +76,7 @@ const Navbar = () => {
                             ))
                         }
                     </Box>
-
-                    {/* Carrito */}
-                    <CartWidget />
+                    <CartWidget cartItem={cartItem} />
 
                 </Toolbar>
             </AppBar>

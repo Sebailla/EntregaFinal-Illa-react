@@ -1,28 +1,29 @@
+
+import { Box, IconButton, Badge } from '@mui/material'
 import React from 'react'
-import { ShoppingBag } from '@mui/icons-material/'
-import { Box, IconButton, Typography} from "@mui/material";
-import { orange } from '@mui/material/colors';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import { Link } from 'react-router-dom';
 
-const CartWidget = () => {
+
+const CartWidget = ({ cartItem }) => {
+
+
+
     return (
-        <Box sx={{ display: "flex" }}>
-            <IconButton
-                color="inherit"
-                size="large"
-                sx={{ color: orange[300], ml: 10 }}
-
-            >
-                <ShoppingBag />
-                <Typography
-                    variant="subtitle2"
-                    ml={0.3}
-                    mb={1}
-                >
-                    1
-                </Typography>
-            </IconButton>
+        <Box>
+            <Link to={'/cart'}>
+                <IconButton aria-label='delete'>
+                    <Badge badgeContent={cartItem} color='error'>
+                        <ShoppingBagIcon fontSize='large' htmlColor='#000' />
+                    </Badge>
+                </IconButton>
+            </Link>
         </Box>
     )
 }
 
-export default CartWidget 
+export default CartWidget
+
+
+
+
