@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
 
 .App {
   text-align: center;
@@ -39,9 +38,3 @@
   }
 }
 
-h1 {
-  font-family: "Smooch";
-  font-size: 48px;
-  color: orange;
-  font-weight: 300;
-}
