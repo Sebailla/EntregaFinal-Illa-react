@@ -8,7 +8,7 @@ const ItemList = ({ items, loading }) => {
                 loading ?
                     <div>Cargando...</div>
                     :
-                    items.map((item) => <ItemCard data={item} />)
+                    items.map((item, index) => <ItemCard key={item.title + index} data={item} />)
             }
         </div>
     )
@@ -21,7 +21,7 @@ const listStyle = {
     flexDirection: 'row',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    gap: '20px',
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    gap: '30px',
+    backgroundColor: 'rgba(0, 15, 0, 0.05)',
     padding: '20px'
 }

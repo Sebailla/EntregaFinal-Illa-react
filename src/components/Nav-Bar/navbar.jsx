@@ -25,7 +25,7 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{backgroundColor: 'whitesmoke'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -57,23 +57,18 @@ const NavBar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {/* {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">{page}</Typography>
-                                    </MenuItem>
-                                ))} */}
                             <Link to={'/products/all'}
-                            style={{
-                                textDecoration: 'none',
-                                color: '#000',
-                                fontWeight: 500,
-                                fontSize: 36,
-                                margin: 25,
-                                padding: 5
-                            }}
-                        >
-                            {pages}
-                        </Link>
+                                style={{
+                                    textDecoration: 'none',
+                                    color: '#000',
+                                    fontWeight: 500,
+                                    fontSize: 36,
+                                    margin: 25,
+                                    padding: 5
+                                }}
+                            >
+                                {pages}
+                            </Link>
                         </Menu>
                     </Box>
                     <Link to={'/'}>
@@ -81,14 +76,14 @@ const NavBar = () => {
                             component='img'
                             src={logo}
                             alt="logo"
-                            sx={{ width: 140, height: 70 }}
+                            sx={{ width: 180, height: 90 }}
                         />
                     </Link>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Link to={'/products/all'}
                             style={{
                                 textDecoration: 'none',
-                                color: '#fff',
+                                color: '#0d6efd',
                                 fontWeight: 500,
                                 fontSize: 36,
                                 marginLeft: 60

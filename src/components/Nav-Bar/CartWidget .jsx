@@ -14,7 +14,7 @@ const CartWidget = ({ cartItem }) => {
             <Link to={'/cart'}>
                 <IconButton aria-label='delete'>
                     <Badge badgeContent={1} color='error'>
-                        <ShoppingBagIcon fontSize='large' htmlColor='#fff' />
+                        <ShoppingBagIcon fontSize='large' htmlColor='#0d6efd' />
                     </Badge>
                 </IconButton>
             </Link>
