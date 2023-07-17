@@ -5,7 +5,7 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { Link } from 'react-router-dom';
 
 
-const CartWidget = ({ cartItem }) => {
+const CartWidget = ({ cartQuantity }) => {
 
 
 
@@ -13,7 +13,7 @@ const CartWidget = ({ cartItem }) => {
         <Box>
             <Link to={'/cart'}>
                 <IconButton aria-label='delete'>
-                    <Badge badgeContent={1} color='error'>
+                    <Badge badgeContent={cartQuantity} color='error'>
                         <ShoppingBagIcon fontSize='large' htmlColor='#0d6efd' />
                     </Badge>
                 </IconButton>

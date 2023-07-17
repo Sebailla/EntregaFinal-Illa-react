@@ -7,14 +7,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import CartWidget from './CartWidget ';
 import { Link } from 'react-router-dom';
-import { Menu, MenuItem } from '@mui/material';
+import { Menu } from '@mui/material';
 import logo from './logo_1_ch-remo.png';
+import { AppContext } from '../../context/context';
 
 const pages = ['Tienda'];
 
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+    const { quantityCart } = React.useContext(AppContext)
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -25,7 +28,7 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="static" sx={{backgroundColor: 'whitesmoke'}}>
+        <AppBar position="static" sx={{ backgroundColor: 'whitesmoke' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -92,9 +95,15 @@ const NavBar = () => {
                             {pages}
                         </Link>
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <CartWidget />
-                    </Box>
+                    {
+                        quantityCart === 0 ? 
+                        null
+                        :
+                        
+                        <Box sx={{ flexGrow: 0 }}>
+                            <CartWidget cartQuantity={quantityCart} />
+                        </Box>
+                    }
                 </Toolbar>
             </Container>
         </AppBar>

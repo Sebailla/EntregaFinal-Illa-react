@@ -1,25 +1,27 @@
 import React from 'react'
 import TabsProduct from '../components/tabs'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProducts } from '../sdk/products';
 import ItemList from '../components/itemList';
+import { getFirestore, collection, getDocs, where, query } from 'firebase/firestore/lite'
 
 const Categories = [
     { id: 'all', title: 'Todos los Productos' },
-    { id: 'sustrato', title: 'Sustrato para Acuarios' },
+    { id: 'acuarios', title: 'Acuarios' },
+    { id: 'sustrato', title: 'Sustratos' },
     { id: 'peces', title: 'Peces' },
-    { id: 'plantas', title: 'Plantas Acuáticas' }
+    { id: 'plantas', title: 'Plantas Acuáticas' },
+    { id: 'filtros', title: 'Filtros' }
 ];
 
-const searchCategory = (id) => {
+/* const searchCategory = (id) => {
     switch (id) {
-        case 'sustrato': return 'Sustrato para Acuarios';
-        case 'peces': return 'Peces';
+        case 'acuarios': return 'acuarios';
+        case 'peces': return 'peces';
         case 'plantas': return 'Plantas Acuáticas';
         default:
-            return 'acuarios'
+            return 'sustrato'
     }
-}
+} */
 
 const ItemContainer = () => {
 
@@ -35,7 +37,7 @@ const ItemContainer = () => {
         }
     }, [category, navigate]);
 
-    React.useEffect(() => {
+    /* React.useEffect(() => {
         setLoading(true);
         getProducts(searchCategory(category))
             .then(res => res.json())
@@ -45,13 +47,67 @@ const ItemContainer = () => {
                         id: elemento.id,
                         title: elemento.title,
                         price: elemento.price,
-                        image: elemento.thumbnail
+                        image: elemento.thumbnail,
+                        stock: elemento.available_quantity
                     }
                 })
                 setItems(data)
             })
             .finally(() => setLoading(false));
-    }, [searchCategory(category)])
+    }, [category]) */
+
+
+    /* // -- Acceder a Documento de Firebase --
+    React.useEffect(() => {
+        const db = getFirestore();
+        const getProducts = doc(db, 'productos', '0g06cFexMYxSx1Bf5R0K')
+
+        getDocs(getProducts)
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log({id: snapshot.id, ...snapshot.data()})
+                }
+            })
+    }, []) */
+
+    /* // -- Acceder a una Colección de Firebase SIN filtros --
+    React.useEffect(() => {
+        const db = getFirestore();
+        const getCollection = collection(db, 'productos');
+
+
+
+        getDocs(getCollection)
+            .then((snapshot) => {
+                console.log(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
+            })
+    }) */
+
+    // -- Acceder a una Colección de Firebase CON filtros --
+    React.useEffect(() => {
+        setLoading(true)
+        const db = getFirestore();
+        const getCollection = collection(db, 'productos');
+
+        if (category === 'all') {
+            getDocs(getCollection)
+                .then((snapshot) => {
+                    setLoading(false)
+                    setItems(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
+                    console.log(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
+                })
+        } else if (Categories.some(categories => categories.id === category)) {
+            const q = query(getCollection, where('categoryId', '==', category))
+            getDocs(q)
+                .then((snapshot) => {
+                    setLoading(false)
+                    setItems(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
+                    console.log(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
+                })
+        }
+        setLoading(false);
+    }, [category])
+
 
     return (
         <div>

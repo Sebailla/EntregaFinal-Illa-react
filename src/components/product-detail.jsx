@@ -2,8 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import ItemCount from './itemCount';
+import { Typography } from '@mui/material';
 
-const ProductDetail = ({ data }) => {
+const ProductDetail = ({ data, addToCart, loading }) => {
+
     return (
         <div style={{
 
@@ -14,7 +17,7 @@ const ProductDetail = ({ data }) => {
             justifyContent: 'space-around',
             gap: 'between',
         }}>
-            <img src={data?.pictures?.[0].url} alt={data?.title}
+            <img src={data?.imageURL} alt={data?.title}
                 style={{ width: 500, height: 550 }}
             ></img>
             <div>
@@ -27,11 +30,14 @@ const ProductDetail = ({ data }) => {
                     marginTop: 40
                 }}>$ {data?.price}</h3>
 
+                <Typography variant="body2" color="text.secondary">
+                    Disponible: {data?.stock}
+                </Typography>
 
                 <Stack direction="row" spacing={2}>
-                    <NavLink to={'/cart'}>
-                        <Button variant="contained" color='primary'>Comprar</Button>
-                    </NavLink>
+
+                    <ItemCount stock={data?.stock || 0} addToCart={addToCart}/>
+
                     <NavLink to={'/product/'}>
                         <Button variant="contained" color='secondary'>Volver</Button>
                     </NavLink>
