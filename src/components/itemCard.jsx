@@ -19,9 +19,11 @@ const ItemCard = ({ data }) => {
             id: data.id,
             product: data.title,
             priceUnit: data.price,
-            quantity: quantity
+            quantity: quantity,
+            imageURL: data.imageURL
         })
     }
+    
     return (
         <Card sx={{ maxWidth: 330 }}>
             <div style={{

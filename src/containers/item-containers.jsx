@@ -6,22 +6,13 @@ import { getFirestore, collection, getDocs, where, query } from 'firebase/firest
 
 const Categories = [
     { id: 'all', title: 'Todos los Productos' },
-    { id: 'acuarios', title: 'Acuarios' },
-    { id: 'sustrato', title: 'Sustratos' },
-    { id: 'peces', title: 'Peces' },
-    { id: 'plantas', title: 'Plantas Acuáticas' },
-    { id: 'filtros', title: 'Filtros' }
+    { id: 'Acuarios', title: 'Acuarios' },
+    { id: 'Sustrato', title: 'Sustratos' },
+    { id: 'Peces', title: 'Peces' },
+    { id: 'Plantas', title: 'Plantas Acuáticas' },
+    { id: 'Filtros', title: 'Filtros' },
+    { id: 'Calentadores', title: 'Calentadores' }
 ];
-
-/* const searchCategory = (id) => {
-    switch (id) {
-        case 'acuarios': return 'acuarios';
-        case 'peces': return 'peces';
-        case 'plantas': return 'Plantas Acuáticas';
-        default:
-            return 'sustrato'
-    }
-} */
 
 const ItemContainer = () => {
 
@@ -37,52 +28,6 @@ const ItemContainer = () => {
         }
     }, [category, navigate]);
 
-    /* React.useEffect(() => {
-        setLoading(true);
-        getProducts(searchCategory(category))
-            .then(res => res.json())
-            .then(res => {
-                const data = res.results?.map((elemento) => {
-                    return {
-                        id: elemento.id,
-                        title: elemento.title,
-                        price: elemento.price,
-                        image: elemento.thumbnail,
-                        stock: elemento.available_quantity
-                    }
-                })
-                setItems(data)
-            })
-            .finally(() => setLoading(false));
-    }, [category]) */
-
-
-    /* // -- Acceder a Documento de Firebase --
-    React.useEffect(() => {
-        const db = getFirestore();
-        const getProducts = doc(db, 'productos', '0g06cFexMYxSx1Bf5R0K')
-
-        getDocs(getProducts)
-            .then((snapshot) => {
-                if (snapshot.exists()) {
-                    console.log({id: snapshot.id, ...snapshot.data()})
-                }
-            })
-    }, []) */
-
-    /* // -- Acceder a una Colección de Firebase SIN filtros --
-    React.useEffect(() => {
-        const db = getFirestore();
-        const getCollection = collection(db, 'productos');
-
-
-
-        getDocs(getCollection)
-            .then((snapshot) => {
-                console.log(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
-            })
-    }) */
-
     // -- Acceder a una Colección de Firebase CON filtros --
     React.useEffect(() => {
         setLoading(true)
@@ -92,29 +37,33 @@ const ItemContainer = () => {
         if (category === 'all') {
             getDocs(getCollection)
                 .then((snapshot) => {
+                    setItems(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
                     setLoading(false)
-                    setItems(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
-                    console.log(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
                 })
         } else if (Categories.some(categories => categories.id === category)) {
             const q = query(getCollection, where('categoryId', '==', category))
             getDocs(q)
                 .then((snapshot) => {
+                    setItems(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
                     setLoading(false)
-                    setItems(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
-                    console.log(snapshot.docs.map(el => ({ id: el.id, ...el.data() })))
                 })
         }
         setLoading(false);
     }, [category])
 
-
     return (
         <div>
             <TabsProduct current={current} item={Categories} />
-            <div>
-                <ItemList items={items} loading={loading} />
-            </div>
+
+            {
+                Boolean(loading) ?
+                    <h4 style={{ textAlign: 'center', padding: '30px' }}>Cargando Productos ....</h4>
+                    : 
+                    <div>
+                        <ItemList items={items} loading={loading} />
+                    </div>
+            }
+
         </div>
     )
 }

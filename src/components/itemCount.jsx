@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const ItemCount = ({ stock, addToCart }) => {
 
@@ -25,6 +26,13 @@ const ItemCount = ({ stock, addToCart }) => {
         addToCart(counter);
         setCounter(1);
         setClicked(true);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Tu producto se agrego al Carrito',
+            showConfirmButton: false,
+            timer: 1000
+        })
     }
 
     const handlerNavigateToCart = () => {
@@ -35,26 +43,26 @@ const ItemCount = ({ stock, addToCart }) => {
 
     return (
         <div>
-            {   
-            clicked ?
-            <Button onClick={handlerNavigateToCart}>Finalizar Compra</Button>
-            :
-                <>
-                    <div
-                        style={{
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            flexDirection: 'row',
-                            gap: '10px'
-                        }}
-                    >
-                        <Button onClick={handlerSubstract}>-</Button>
-                        <p>{counter}</p>
-                        <Button onClick={handlerAdd}>+</Button>
-                    </div>
-                    <Button onClick={handlerCart} size='small'>Agregar al Carrito</Button>
-                </>
+            {
+                clicked ?
+                    <Button onClick={handlerNavigateToCart}>Finalizar Compra</Button>
+                    :
+                    <>
+                        <div
+                            style={{
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexDirection: 'row',
+                                gap: '10px'
+                            }}
+                        >
+                            <Button onClick={handlerSubstract}>-</Button>
+                            <p>{counter}</p>
+                            <Button onClick={handlerAdd}>+</Button>
+                        </div>
+                        <Button onClick={handlerCart} size='small'>Agregar al Carrito</Button>
+                    </>
             }
         </div>
     )
