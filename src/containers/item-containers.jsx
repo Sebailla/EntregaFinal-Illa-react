@@ -54,7 +54,6 @@ const ItemContainer = () => {
     return (
         <div>
             <TabsProduct current={current} item={Categories} />
-
             {
                 Boolean(loading) ?
                     <h4 style={{ textAlign: 'center', padding: '30px' }}>Cargando Productos ....</h4>
@@ -63,7 +62,6 @@ const ItemContainer = () => {
                         <ItemList items={items} loading={loading} />
                     </div>
             }
-
         </div>
     )
 }

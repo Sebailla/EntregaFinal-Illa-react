@@ -37,8 +37,6 @@ const ContextProvider = ({ children }) => {
             .catch((err) => {
                 console.log(err)
             })
-
-
     }
 
     return (

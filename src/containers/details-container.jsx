@@ -32,7 +32,6 @@ const DetailsContainer = () => {
           <h4 style={{textAlign:'center', padding:'30px'}}>Cargando Productos ....</h4>
           :
           <ProductDetail data={data} addToCart={addProductToCart} loding={loading} />
-
       }
     </div>
   )

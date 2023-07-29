@@ -13,7 +13,6 @@ import { AppContext } from '../../context/context';
 
 const pages = ['Tienda'];
 
-
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -96,13 +95,12 @@ const NavBar = () => {
                         </Link>
                     </Box>
                     {
-                        quantityCart === 0 ? 
-                        null
-                        :
-                        
-                        <Box sx={{ flexGrow: 0 }}>
-                            <CartWidget cartQuantity={quantityCart} />
-                        </Box>
+                        quantityCart === 0 ?
+                            null
+                            :
+                            <Box sx={{ flexGrow: 0 }}>
+                                <CartWidget cartQuantity={quantityCart} />
+                            </Box>
                     }
                 </Toolbar>
             </Container>

@@ -23,7 +23,6 @@ const ProductDetail = ({ data, loading }) => {
     return (
 
         <div style={{
-
             margin: '20px',
             padding: '20px',
             display: 'flex',
@@ -32,34 +31,32 @@ const ProductDetail = ({ data, loading }) => {
             gap: 'between',
         }}>
             {
-                    <>
-                        <img src={data?.imageURL} alt={data?.title}
-                            style={{ width: 500, height: 550 }}
-                        ></img>
-                        <div>
-                            <h1>{data?.title}</h1>
-                            <p>{data?.state} - {data?.country}</p>
-                            <h3 style={{
-                                color: 'orangered',
-                                fontWeight: 'bold',
-                                fontSize: 36,
-                                marginTop: 40
-                            }}>$ {data?.price}</h3>
-
-                            <Typography variant="body2" color="text.secondary">
-                                Disponible: {data?.stock}
-                            </Typography>
-
-                            <div style={{marginTop: '25px', paddingTop:'25px'}}>
-                                <Stack direction="row" spacing={20}>
-                                    <ItemCount stock={data?.stock || 0} addToCart={addToCart} />
-                                    <NavLink to={'/product/'}>
-                                        <Button variant="contained" color='secondary'>Volver</Button>
-                                    </NavLink>
-                                </Stack>
-                            </div>
+                <>
+                    <img src={data?.imageURL} alt={data?.title}
+                        style={{ width: 500, height: 550 }}
+                    ></img>
+                    <div>
+                        <h1>{data?.title}</h1>
+                        <p>{data?.state} - {data?.country}</p>
+                        <h3 style={{
+                            color: 'orangered',
+                            fontWeight: 'bold',
+                            fontSize: 36,
+                            marginTop: 40
+                        }}>$ {data?.price}</h3>
+                        <Typography variant="body2" color="text.secondary">
+                            Disponible: {data?.stock}
+                        </Typography>
+                        <div style={{ marginTop: '25px', paddingTop: '25px' }}>
+                            <Stack direction="row" spacing={20}>
+                                <ItemCount stock={data?.stock || 0} addToCart={addToCart} />
+                                <NavLink to={'/product/'}>
+                                    <Button variant="contained" color='secondary'>Volver</Button>
+                                </NavLink>
+                            </Stack>
                         </div>
-                    </>
+                    </div>
+                </>
             }
         </div>
     )

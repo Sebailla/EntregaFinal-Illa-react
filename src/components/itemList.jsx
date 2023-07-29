@@ -3,13 +3,11 @@ import ItemCard from './itemCard';
 
 const ItemList = ({ items, loading }) => {
     return (
-
         <div div style={listStyle} >
             {
                 items.map((item, index) => <ItemCard key={item.title + index} data={item} />)
             }
         </div>
-
     )
 }
 

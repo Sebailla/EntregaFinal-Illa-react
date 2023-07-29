@@ -37,9 +37,7 @@ const ItemCount = ({ stock, addToCart }) => {
 
     const handlerNavigateToCart = () => {
         return navigate('/cart')
-
     }
-
 
     return (
         <div>

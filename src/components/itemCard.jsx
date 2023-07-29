@@ -48,7 +48,6 @@ const ItemCard = ({ data }) => {
                     <Typography variant="body2" color="text.secondary">
                         Disponible: {data.stock}
                     </Typography>
-
                 </CardContent>
                 <CardActions
                     sx={{

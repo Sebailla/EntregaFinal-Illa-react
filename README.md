@@ -1,13 +1,6 @@
 # Aqualife React App
 
-## ENV params
-REACT_APP_FIREBASE_API_KEY = AIzaSyBmDulBJoIf0_WNlTaHKongPcAqeLfdK40
-REACT_APP_FIREBASE_APP_ID = 1:873380815817:web:d8ad976b97c0df1f27be1
-
-
 # Bienvenido a Aqualife Tienda
-![Logo]('../preentrega2-3/src/components/Nav-Bar/logo_1_ch-remo.png')
-
 
 ### Env Variables:
 
@@ -18,7 +11,7 @@ REACT_APP_FIREBASE_MEASURE_ID=G-W1NT136FYW
 ## Tabla de Contenido
 1. [Información General](#general-info)
 2. [Tecnologías](#technologies)
-3. [Instalación](#installation)
+3. [Parámetros](#installation)
 4. [Colaboración](#collaboration)
 5. [FAQs](#faqs)
 ### Información General
@@ -39,7 +32,10 @@ Lista de Tecnologías usadas en este proyecto:
 
 
 ```
-En desarrollo
+Env Variables:
+REACT_APP_FIREBASE_API_KEY = AIzaSyBmDulBJoIf0_WNlTaHKongPcAqeLfdK40
+REACT_APP_FIREBASE_APP_ID = 1:873380815817:web:d8ad976b97c0df1f27be1
+
 ```
 
 ## Colaboración

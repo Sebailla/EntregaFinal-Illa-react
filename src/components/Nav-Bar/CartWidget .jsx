@@ -4,11 +4,7 @@ import React from 'react'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { Link } from 'react-router-dom';
 
-
 const CartWidget = ({ cartQuantity }) => {
-
-
-
     return (
         <Box>
             <Link to={'/cart'}>

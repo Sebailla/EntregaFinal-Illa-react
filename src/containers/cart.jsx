@@ -6,8 +6,6 @@ import { Button, Typography } from '@mui/material';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-
-
 const Cart = () => {
 
   const { carrito, createNewOrder, lastOrder } = React.useContext(AppContext);
@@ -82,7 +80,6 @@ const Cart = () => {
                   ))
                 }
               </table>
-
               <div style={{ textAlign: 'center', marginTop: '30px', border:'1px solid red', borderRadius:'10px', padding:'20px'}}>
                 <Typography variant='h3'>
                   Total a Pagar: 
@@ -107,12 +104,10 @@ const Cart = () => {
                   :
                   <UserInfo carrito={carrito} createNewOrder={createNewOrder} lastOrder={lastOrder} />
               }
-
             </div>
           </>
       }
     </div>
-
   )
 }
 
