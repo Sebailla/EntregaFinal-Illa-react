@@ -2,11 +2,6 @@
 
 # Bienvenido a Aqualife Tienda
 
-### Env Variables:
-
-REACT_APP_FIREBASE_API_KEY=AIzaSyBmDulBJoIf0_WNlTaHKongPcAqeLfdK40
-
-REACT_APP_FIREBASE_MEASURE_ID=G-W1NT136FYW
 
 ## Tabla de Contenido
 1. [Información General](#información-general)
