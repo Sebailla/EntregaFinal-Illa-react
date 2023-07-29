@@ -9,10 +9,10 @@ REACT_APP_FIREBASE_API_KEY=AIzaSyBmDulBJoIf0_WNlTaHKongPcAqeLfdK40
 REACT_APP_FIREBASE_MEASURE_ID=G-W1NT136FYW
 
 ## Tabla de Contenido
-1. [Información General](#general-info)
-2. [Tecnologías](#technologies)
-3. [Parámetros](#installation)
-4. [Colaboración](#collaboration)
+1. [Información General](#información-general)
+2. [Tecnologías](#tecnologías)
+3. [Parámetros](#parámetros)
+4. [Colaboración](#colaboración)
 5. [FAQs](#faqs)
 ### Información General
 ***
@@ -28,7 +28,7 @@ Lista de Tecnologías usadas en este proyecto:
 * [MUI/material](https://mui.com/): Version 1234
 * [Sweet Alert 2](https://sweetalert2.github.io/): Version 1234
 
-## Instalación
+## Parámetro
 
 
 ```
